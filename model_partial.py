@@ -123,9 +123,6 @@ class Encoder_overall(Module):
     #     loss_recon_omics1 = F.mse_loss(features_omics1, results['emb_recon_omics1'])
     #     loss_recon_omics2 = F.mse_loss(features_omics2, results['emb_recon_omics2'])
         
-    #     # correspondence loss
-    #     # loss_corr_omics1 = F.mse_loss(results['emb_latent_omics1'], results['emb_latent_omics1_across_recon'])
-    #     # loss_corr_omics2 = F.mse_loss(results['emb_latent_omics2'], results['emb_latent_omics2_across_recon'])
         
     #     # alignment loss
     #     real_labels1 = torch.ones(results['emb_latent_omics1'].size(0), 1)
