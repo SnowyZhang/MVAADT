@@ -49,9 +49,9 @@ class Encoder_overall(Module):
 
         self.translation_12 = translationModel(self.dim_out_feat_omics1, self.dim_out_feat_omics2)  # translation from omics1 to omics2
         self.translation_21 = translationModel(self.dim_out_feat_omics2, self.dim_out_feat_omics1)  # translation from omics2 to omics1
-        # 加载预训练权重
-        # self.translation_12.load_state_dict(torch.load('/home/zxx/SpatialGlue/translationSet/PBMC_translation21.pth'))
-        # self.translation_21.load_state_dict(torch.load('/home/zxx/SpatialGlue/translationSet/Thymus_Spleen_translation21.pth'))
+        # load pre-trained weights
+        # self.translation_12.load_state_dict(torch.load('./translationSet/PBMC_translation21.pth'))
+        # self.translation_21.load_state_dict(torch.load('./translationSet/Thymus_Spleen_translation21.pth'))
         
         self.atten_omics1 = AttentionLayer(self.dim_out_feat_omics1, self.dim_out_feat_omics1)
         self.atten_omics2 = AttentionLayer(self.dim_out_feat_omics2, self.dim_out_feat_omics2)
@@ -100,6 +100,9 @@ class Encoder_overall(Module):
                    'emb_latent_combined':emb_latent_combined,
                    'emb_recon_omics1':emb_recon_omics1,
                    'emb_recon_omics2':emb_recon_omics2,
+                   'alpha_omics1':alpha_omics1,
+                   'alpha_omics2':alpha_omics2,
+                   'alpha':alpha_omics_1_2
                    }
         
         return results  
@@ -164,6 +167,13 @@ class Discriminator(nn.Module):
     def forward(self, x):
         return self.model(x)
     
+'''
+---------------------
+Encoder & Decoder functions
+author: Yahui Long https://github.com/JinmiaoChenLab/SpatialGlue
+AGPL-3.0 LICENSE
+---------------------
+'''
 
 class Encoder(Module): 
     
